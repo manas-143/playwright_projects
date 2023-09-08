@@ -21,7 +21,7 @@ def run(playwright: Playwright) -> None:
 
 
     #for login credential
-    page.locator(tags["USER NAME"]).fill("standard_user")
+    page.locator(tags["USER NAME"]).type("standard_user", delay=1000)
     page.locator(tags["PASSWORD"]).fill("secret_sauce")
     page.locator(tags["LOGIN"]).click()
 
@@ -53,3 +53,9 @@ def run(playwright: Playwright) -> None:
 
 with sync_playwright() as playwright:
     run(playwright)
+
+    with page.expect_popup() as page1_info:
+        page.get_by_role("link", name="HP Laptop 15s, AMD Ryzen 7 5700U, 15.6-inch (39.6 cm), FHD, 16GB DDR4, 512GB SSD, AMD Radeon Graphics, Backlit KB, Thin & Light, Dual Speakers (Win 11, MSO 2021, Silver, 1.69 kg), ey2001AU").click()
+    page1 = page1_info.value
+    page1.get_by_title("Add to Shopping Cart").click()
+    page1.close()
