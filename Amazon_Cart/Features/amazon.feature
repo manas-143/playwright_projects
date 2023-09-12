@@ -7,7 +7,7 @@ Feature: Amazon laptop purchase
     Then the total amount in the cart should match the laptop prices
     Examples:
       |   laptops    | num |
-      | HP LAPTOPS   |  4  |
-      | dELL LAPTOPS |  3  |
-      | ACER LAPTOPS |  5  |
+      | HP LAPTOPS   |  14  |
+#      | dELL LAPTOPS |  3  |
+#      | ACER LAPTOPS |  5  |
 

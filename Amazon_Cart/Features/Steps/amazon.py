@@ -19,7 +19,7 @@ amount = []  # to store the  amount of each laptop
 
 # start playwright
 start = sync_playwright().start()
-browser = start.chromium.launch(headless=False, slow_mo=5000)
+browser = start.chromium.launch(headless=False)
 
 
 @step('User is on the Amazon website')
@@ -44,7 +44,7 @@ def filter_by_ratings(context):
 def add_laptops_to_cart(context, number):
     all_laptops = context.page.locator(tags["LAPTOPS LIST"])  # above 4star rating laptops
 
-    for i in range(min(all_laptops.count(), int(number))):
+    for i in range( int(number)):
         with context.page.expect_popup() as page1_info:
             all_laptops.nth(i).click()  # click on each laptop
         context.page1 = page1_info.value  # going to next tab
