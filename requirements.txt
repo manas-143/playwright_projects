@@ -1,2 +1,2 @@
 behave
-playwright-python
+playwright
